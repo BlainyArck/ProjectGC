@@ -3,15 +3,17 @@ import { ContainerLogin } from "../styles/login.style";
 
 import Input from "../../../shared/components/input/input";
 import Button from "../../../shared/components/button/Button";
-import Text from "../../../shared/components/text/Text";
 import { theme } from "../../../shared/theme/theme";
 
 const Login = () => {
     return(
         <View>
             <ContainerLogin>
-                <Text/>
-                <Input placeholder="Digite seu email" title="Email:"></Input>
+                <Input 
+                    errorMessage="Usuário ou senha inválido" 
+                    placeholder="Digite seu email" 
+                    title="Email:">    
+                </Input>
                 <Button 
                     type={theme.buttons.buttonsTheme.primary} 
                     margin="16px" 
