@@ -4,13 +4,14 @@ import { ContainerLogin } from "../styles/login.style";
 import Input from "../../../shared/components/input/input";
 import Button from "../../../shared/components/button/Button";
 import { theme } from "../../../shared/theme/theme";
+import { Icon } from "../../../shared/components/icon/icon";
 
 const Login = () => {
     return(
         <View>
             <ContainerLogin>
-                <Input 
-                    errorMessage="Usuário ou senha inválido" 
+                <Icon name="home3" color="blue" size={44}/>
+                <Input  
                     placeholder="Digite seu email" 
                     title="Email:">    
                 </Input>
