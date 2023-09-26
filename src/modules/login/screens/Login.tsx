@@ -4,8 +4,12 @@ import { ContainerLogin, ImageLogo } from "../styles/login.style";
 import Input from "../../../shared/components/input/input";
 import Button from "../../../shared/components/button/Button";
 import { theme } from "../../../shared/theme/theme";
+import axios from "axios";
 
 const Login = () => {
+    const handleOnPress = async () =>{
+        console.log('clicou')
+    }
     return(
         <View>
             <ContainerLogin>
@@ -24,6 +28,7 @@ const Login = () => {
                     type={theme.buttons.buttonsTheme.primary} 
                     margin="16px" 
                     title="ENTRAR"
+                    onPress={handleOnPress}
                 />
             </ContainerLogin>
         </View>
