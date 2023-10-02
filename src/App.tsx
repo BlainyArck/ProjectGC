@@ -1,11 +1,15 @@
 import { SafeAreaView } from 'react-native';
 import Login from './modules/login';
+import { Provider } from 'react-redux';
+import store from './store';
 
 const App = () => {
   return (
-    <SafeAreaView>
-        <Login/>
-    </SafeAreaView>
+    <Provider store={store}>
+      <SafeAreaView>
+          <Login/>
+      </SafeAreaView>
+    </Provider>
   );
 };
 

@@ -5,9 +5,8 @@ import { useRequest } from "../../../shared/hooks/useRequest";
 export const useLogin = () => {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
-    const { authRequest, errorMessage, loading, user, setErrorMessage } = useRequest();
+    const { authRequest, errorMessage, loading, setErrorMessage } = useRequest();
 
-    console.log('user', user);
     const handleOnPress = async () =>{
         authRequest({
             email,
