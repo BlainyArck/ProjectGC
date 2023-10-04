@@ -1,13 +1,13 @@
 import { View } from "react-native"
 import { ContainerLogin, ImageLogo } from "../styles/login.style";
-
 import Input from "../../../shared/components/input/input";
 import Button from "../../../shared/components/button/Button";
 import { theme } from "../../../shared/theme/theme";
 import { useLogin } from "../hooks/useLogin";
-
+import { useNavigation } from "@react-navigation/native";
 
 const Login = () => {
+    const navigation = useNavigation();
     const {
         email,
         password,
@@ -17,7 +17,7 @@ const Login = () => {
         handleOnChangeEmail,
         handleOnChangePassword,
     } = useLogin();
-    
+   
     return(
         <View>
             <ContainerLogin>
