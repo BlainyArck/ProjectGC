@@ -77,5 +77,5 @@ export const useRequest = () => {
         request,
         authRequest,
         setErrorMessage,
-    }
-}
+    };
+};

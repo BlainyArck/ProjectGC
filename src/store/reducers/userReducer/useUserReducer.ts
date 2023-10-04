@@ -8,7 +8,7 @@ export const useUserReducer = () => {
     const { user } = useAppSelector((state) => state.userReducer);
     const setUser = (currentUser: UserType) =>{
         dispath(setUserAction(currentUser));
-    }
+    };
 
     return {
         user,

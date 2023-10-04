@@ -6,32 +6,46 @@ import { MethodEnum } from "../../../enums/methods.enum";
 import { useUserReducer } from "../../../store/reducers/userReducer/useUserReducer";
 import { NavigationProp, ParamListBase, useNavigation } from "@react-navigation/native";
 import { MenuUrl } from "../../../shared/enums/MenuUrl.enum";
+import { getAutorizationToken } from "../../../shared/functions/connection/auth";
 
+const TIME_SLEEP = 5000;
 const Splash = () => {
     const { reset } = useNavigation<NavigationProp<ParamListBase>>();
     const { request } = useRequest();
     const { setUser } = useUserReducer();
     useEffect(() => {
-        const verifyLogin = async () => {
-            const returnUser = await request({
-                url: URL_USER,
-                method: MethodEnum.GET,
-                saveGlobal: setUser,
-            });
+        const findUser = async () => {
+            let returnUser = undefined;
+            const token = await getAutorizationToken();
+            if (token){
+                returnUser = await request({
+                    url: URL_USER,
+                    method: MethodEnum.GET,
+                    saveGlobal: setUser,
+                });
+            }
+            return returnUser;
+        }
 
-            if (returnUser) {
+        const verifyLogin = async () => {
+            const [returnUser] = await Promise.all([
+                findUser(),
+                new Promise((r) => setTimeout(r, TIME_SLEEP)),
+            ]);
+
+            if (returnUser){
                 reset({
                     index: 0,
-                    routes: [{ name: MenuUrl.HOME }],
-                });
+                    routes: [{ name: MenuUrl.HOME}]
+                })
             } else {
                 reset({
                     index: 0,
-                    routes: [{ name: MenuUrl.LOGIN }],
-                });
+                    routes: [{ name: MenuUrl.LOGIN}]
+                })
             }
-        };
-        verifyLogin;
+        }
+        verifyLogin();
     }, []);
 
     return(
