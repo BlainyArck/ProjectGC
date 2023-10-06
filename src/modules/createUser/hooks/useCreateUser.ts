@@ -6,8 +6,9 @@ import { URL_USER } from "../../../shared/constants/urls";
 import { MethodEnum } from "../../../enums/methods.enum";
 import { NavigationProp, ParamListBase, useNavigation } from "@react-navigation/native";
 import { MenuUrl } from "../../../shared/enums/MenuUrl.enum";
-import { insertMaskInCpf } from "../../../shared/functions/cpf";
-import { insertMaskInPhone } from "../../../shared/functions/phone";
+import { insertMaskInCpf, validateCpf } from "../../../shared/functions/cpf";
+import { insertMaskInPhone, validatePhone } from "../../../shared/functions/phone";
+import { validateEmail } from "../../../shared/functions/email";
 
 export const useCreateUser = () => {
   const { request, loading } = useRequest();
@@ -25,9 +26,9 @@ export const useCreateUser = () => {
   useEffect(() => {
     if(
       createUser.name !== '' &&
-      createUser.phone !== '' &&
-      createUser.email !== '' &&
-      createUser.cpf !== '' &&
+      validatePhone(createUser.phone) &&
+      validateEmail(createUser.email) &&
+      validateCpf(createUser.cpf) &&
       createUser.password !== '' &&
       createUser.password === createUser.confirmPassword
     ) {
