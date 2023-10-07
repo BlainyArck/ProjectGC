@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, forwardRef } from "react";
+import { TextInput } from "react-native"
 import { theme } from "../../theme/theme";
 import { DisplayFlexColum } from "../globalStyles/globalView.style";
 import Text from "../text/Text";
@@ -16,7 +17,7 @@ interface InputProps extends TextInputProps{
     type?: 'cel-phone' | 'cpf';
 };
 
-const Input = ({ customMargin, secureTextEntry, title, errorMessage, type, onChange, ...props}: InputProps) => {
+const Input = forwardRef<TextInput, InputProps> (({ customMargin, secureTextEntry, title, errorMessage, type, onChange, ...props}: InputProps, ref) => {
     const [currentSecure, setCurrentSecure] = useState<boolean>(!!secureTextEntry);
 
     const handleOnChange = (event: NativeSyntheticEvent<TextInputChangeEventData>) => {
@@ -38,7 +39,7 @@ const Input = ({ customMargin, secureTextEntry, title, errorMessage, type, onCha
                 nativeEvent: {
                     ...event.nativeEvent,
                     text,
-                },
+                }
             });
         }
     };
@@ -64,6 +65,7 @@ const Input = ({ customMargin, secureTextEntry, title, errorMessage, type, onCha
                     secureTextEntry={currentSecure}
                     isError={!!errorMessage} 
                     onChange={handleOnChange}
+                    ref={ref}
                 />
                 {secureTextEntry && <IconEye onPress={handleOnPressEye} name={currentSecure ? 'eye' : 'eye-blocked'} size={20}/>}
             </View>
@@ -77,6 +79,6 @@ const Input = ({ customMargin, secureTextEntry, title, errorMessage, type, onCha
             )}
         </DisplayFlexColum>
     );
-};
+});
 
 export default Input;
