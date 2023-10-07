@@ -38,12 +38,14 @@ const CreateUser = () => {
                 onChange={(event) => handleOnChangeInput(event, 'password')} 
                 customMargin="0px 0px 16px 0px" 
                 placeholder="Digite sua senha" 
+                secureTextEntry
                 title="Senha:"/>
             <Input
                 value={createUser.confirmPassword} 
                 onChange={(event) => handleOnChangeInput(event, 'confirmPassword')} 
                 customMargin="0px 0px 16px 0px" 
                 placeholder="Digite novamente sua senha" 
+                secureTextEntry
                 title="Confirmar senha:"/>
             <Button
                 disabled={disabled}
