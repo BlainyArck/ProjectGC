@@ -1,13 +1,14 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ProductType } from "../../../shared/types/productType";
 
+
 interface ProductStore {
-    products?: ProductType[];
+    products: ProductType[];
 }
 
 const initialState: ProductStore = {
-    products: undefined,
-}
+    products: [],
+};
 
 export const productSlice = createSlice({
     name: 'productReducer',
@@ -19,5 +20,5 @@ export const productSlice = createSlice({
     },
 });
 
-export const { setProductsAction } = productSlice.actions
+export const { setProductsAction } = productSlice.actions;
 export default productSlice.reducer;
