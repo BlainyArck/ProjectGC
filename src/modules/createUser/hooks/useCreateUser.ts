@@ -6,8 +6,8 @@ import { URL_USER } from "../../../shared/constants/urls";
 import { MethodEnum } from "../../../enums/methods.enum";
 import { NavigationProp, ParamListBase, useNavigation } from "@react-navigation/native";
 import { MenuUrl } from "../../../shared/enums/MenuUrl.enum";
-import { insertMaskInCpf, validateCpf } from "../../../shared/functions/cpf";
-import { insertMaskInPhone, validatePhone } from "../../../shared/functions/phone";
+import { validateCpf } from "../../../shared/functions/cpf";
+import { validatePhone } from "../../../shared/functions/phone";
 import { validateEmail } from "../../../shared/functions/email";
 import { removeSpecialCharacters } from "../../../shared/functions/characters";
 
